@@ -4,6 +4,7 @@
 
 html,
 body {
+  @apply bg-gray-50 text-gray-900;
   padding: 0;
   margin: 0;
   font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif;
@@ -28,6 +29,18 @@ h4 {
   font-weight: 700;
 }
 
+h1 {
+  @apply text-4xl my-8;
+}
+
+h2 {
+  @apply text-2xl my-4;
+}
+
+h3 {
+  @apply text-xl my-2;
+}
+
 code[class*="language-"] span, pre[class*="language-"] span,
 code,
 pre {
@@ -37,4 +50,28 @@ pre {
 
 abbr[title] {
   text-decoration: none;
+}
+
+header nav a {
+  position: relative;
+}
+
+header .active {
+  @apply text-blue-800;
+}
+
+header .active:after,
+header nav a:hover:after,
+header nav a:focus:after {
+  content: '';
+  border: 2px solid;
+  @apply border-blue-700;
+  bottom: 6px;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+main a {
+  @apply text-blue-800 underline;
 }

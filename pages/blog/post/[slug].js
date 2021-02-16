@@ -15,7 +15,7 @@ export default function Post({ post, content }) {
         />
       </Head>
       <h1>{post.title}</h1>
-      <div className="post-content" dangerouslySetInnerHTML={{ __html: content }}></div>
+      <div className="post-content max-w-prose" dangerouslySetInnerHTML={{ __html: content }}></div>
     </>
   )
 }

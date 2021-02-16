@@ -11,12 +11,12 @@ export default function Header() {
 
   const menuClasses = {
     menuClasses: 'hidden md:flex md:my-14',
-    linkClasses: 'block p-4'
+    linkClasses: 'block p-4 hover:text-blue-800 focus:text-blue-800'
   }
 
   const mobileClasses = {
     menuClasses: isMenuOpen ? `font-mono flex flex-col` : `hidden`,
-    linkClasses: 'block p-4'
+    linkClasses: 'block p-4 hover:text-blue-800 focus:text-blue-800'
   }
 
   return (
