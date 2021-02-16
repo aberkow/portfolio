@@ -2,13 +2,26 @@ import { useState } from 'react'
 
 import Link from 'next/link'
 
+import { mainLinks } from '../../config'
+import MainMenu from '../Menus/MainMenu'
+
 export default function Header() {
 
   const [ isMenuOpen, setIsMenuOpen ] = useState(false)
 
+  const menuClasses = {
+    menuClasses: 'hidden md:flex md:my-14',
+    linkClasses: 'block p-4'
+  }
+
+  const mobileClasses = {
+    menuClasses: isMenuOpen ? `font-mono flex flex-col` : `hidden`,
+    linkClasses: 'block p-4'
+  }
+
   return (
     <header>
-      <div className="flex justify-between">
+      <div className="flex items-stretch justify-between font-mono">
         <p className="hidden md:block md:text-2xl lg:text-3xl">
           <Link href="/">
             Adam Berkowitz - Web Developer
@@ -21,36 +34,27 @@ export default function Header() {
             </Link>
           </abbr>
         </p>
-        <nav>
-          <button 
-            aria-expanded={isMenuOpen ? 'true' : 'false'}
-            aria-controls="menu"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            { isMenuOpen ? 'Close' : 'Menu' }
-          </button>
-          <ul id="menu" className="flex" className={isMenuOpen ? `block` : `hidden`}>
-            <li>
-              <Link href="/blog">
-                <a className="p-4">Blog</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/projects">
-                <a className="p-4">Projects</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/about">
-                <a className="p-4">About</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact">
-                <a className="p-4">Contact</a>
-              </Link>
-            </li>
-          </ul>
+        <nav className="mb-4">
+          <div className="text-right">
+            <button 
+              aria-expanded={isMenuOpen ? 'true' : 'false'}
+              aria-controls="mobile-menu"
+              className="md:hidden font-mono"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              { isMenuOpen ? 'Close' : 'Menu' }
+            </button>
+          </div>
+          <MainMenu 
+            id="mobile-menu" 
+            classes={mobileClasses} 
+            links={mainLinks} 
+          />
+          <MainMenu 
+            id="menu" 
+            classes={menuClasses} 
+            links={mainLinks} 
+          />
         </nav>
       </div>
     </header>
