@@ -5,7 +5,13 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['IBM Plex Sans', 'Helvetica', 'Arial'],
+        serif: ['IBM Plex Serif', 'Times New Roman', 'Georgia'],
+        mono: ['IBM Plex Mono', 'Courier New']
+      }
+    },
   },
   variants: {
     extend: {},
