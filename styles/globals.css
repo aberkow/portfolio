@@ -84,14 +84,21 @@ footer a:focus {
   @apply no-underline text-red-700;
 }
 
-.intro-container {
-  flex: 1 1 50%;
+code {
+  @apply bg-gray-700 text-gray-50;
+  padding: 0 0.2rem 0.2rem;
 }
 
+.intro-container,
 .headshot-name-container {
   flex: 1 1 50%;
 }
 
 .welcome-container {
   flex: 1 1 100%;
+}
+
+.post-content pre[class*="language-"] {
+  border-radius: 0;
+  margin: 1rem 0;
 }

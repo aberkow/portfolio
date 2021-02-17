@@ -6,15 +6,17 @@ import { contentfulQuery } from '../../lib/graphql'
 export default function Index({ posts }) {
   return (
     <>
-      <h1>The blog index</h1>
+      <h1>Blog</h1>
       <ContentList items={posts} basePath="/blog/post" />
-      {
-        posts.length >= 10 && (
-          <PaginationLink href='/blog/2'>
-            Next Page
-          </PaginationLink>
-        )
-      }
+      <div className="flex flex-wrap justify-end">
+        {
+          posts.length >= 10 && (
+            <PaginationLink href='/blog/2'>
+              Next Page
+            </PaginationLink>
+          )
+        }
+      </div>
     </>
   )
 }
@@ -30,6 +32,7 @@ export async function getStaticProps() {
       items {
         slug
         title
+        excerpt
       }
     }
   }

@@ -8,25 +8,27 @@ export default function Index({ posts, page, totalPages }) {
 
   return (
     <>
-      <h1>Hello blog</h1>
+      <h1>Blog</h1>
       <ContentList items={posts} basePath="/blog/post" />
-      {
-        currentPage >= 2 && currentPage < totalPages && (
-          <PaginationLink href={`/blog/${currentPage + 1}`}>
-            Next Page
-          </PaginationLink>
-        )
-      }
-      {
-        currentPage >= 2 && currentPage <= totalPages && (
+      <div className="flex flex-wrap justify-between">
+        {
+          currentPage >= 2 && currentPage <= totalPages && (
 
-          <PaginationLink
-            href={`/blog/${currentPage - 1 === 1 ? '' : currentPage - 1}`}
-          >
-            Previous Page
-          </PaginationLink>
-        )
-      }
+            <PaginationLink
+              href={`/blog/${currentPage - 1 === 1 ? '' : currentPage - 1}`}
+            >
+              Previous Page
+            </PaginationLink>
+          )
+        }
+        {
+          currentPage >= 2 && currentPage < totalPages && (
+            <PaginationLink href={`/blog/${currentPage + 1}`}>
+              Next Page
+            </PaginationLink>
+          )
+        }
+      </div>
     </>
     
   )
@@ -34,13 +36,19 @@ export default function Index({ posts, page, totalPages }) {
 
 export async function getStaticProps({ params }) {
   
+  const skip = (parseInt(params.page) - 1) * 10
+
   const query = `
   {
-    blogPostCollection {
+    blogPostCollection (
+      limit: 10
+      skip: ${skip}
+    ) {
       total
       items {
         slug
         title
+        excerpt
       }
     }
   }
