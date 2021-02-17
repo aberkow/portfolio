@@ -72,6 +72,26 @@ header nav a:focus:after {
   right: 0;
 }
 
-main a {
+main a,
+footer a {
   @apply text-blue-800 underline;
+}
+
+main a:hover,
+footer a:hover,
+main a:focus,
+footer a:focus {
+  @apply no-underline text-red-700;
+}
+
+.intro-container {
+  flex: 1 1 50%;
+}
+
+.headshot-name-container {
+  flex: 1 1 50%;
+}
+
+.welcome-container {
+  flex: 1 1 100%;
 }
