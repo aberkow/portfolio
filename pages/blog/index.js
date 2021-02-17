@@ -2,12 +2,17 @@ import ContentList from '../../Components/ContentList'
 import PaginationLink from '../../Components/PaginationLink'
 
 import { contentfulQuery } from '../../lib/graphql'
+import { contentListClasses } from '../../config'
 
 export default function Index({ posts }) {
   return (
     <>
       <h1>Blog</h1>
-      <ContentList items={posts} basePath="/blog/post" />
+      <ContentList 
+        items={posts} 
+        basePath="/blog/post" 
+        classes={contentListClasses} 
+      />
       <div className="flex flex-wrap justify-end">
         {
           posts.length >= 10 && (

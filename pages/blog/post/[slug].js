@@ -2,10 +2,20 @@ import Head from 'next/head'
 
 import { markdownToHTML } from '../../../lib/markdown'
 import { contentfulQuery } from '../../../lib/graphql'
+import { taxonomyListClasses } from '../../../config'
+import ContentList from '../../../Components/ContentList'
 
 import SEO from '../../../Components/Head/SEO'
 
 export default function Post({ post, content }) {
+
+  const tags = post.tagReferenceGroupCollection.items.map(item => {
+    return {
+      slug: item.taxonomySlug,
+      title: item.taxonomyName
+    }
+  })
+
   return (
     <>
       <Head>
@@ -14,7 +24,16 @@ export default function Post({ post, content }) {
           title={post.title}
         />
       </Head>
-      <h1>{post.title}</h1>
+      <div className="flex flex-wrap justify-between">
+        <h1>{post.title}</h1>
+        <div>
+          <ContentList 
+            items={tags} 
+            basePath={`/tags`} 
+            classes={taxonomyListClasses} 
+          />
+        </div>
+      </div>
       <div className="post-content max-w-prose" dangerouslySetInnerHTML={{ __html: content }}></div>
     </>
   )
@@ -33,6 +52,12 @@ export async function getStaticProps({ params }) {
           slug
           title
           content
+          tagReferenceGroupCollection {
+            items {
+              taxonomyName
+              taxonomySlug
+            }
+          }
         }
       }
     }
