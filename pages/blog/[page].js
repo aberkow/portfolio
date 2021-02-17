@@ -1,6 +1,7 @@
 import ContentList from '../../Components/ContentList'
 import PaginationLink from '../../Components/PaginationLink'
 import { contentfulQuery } from '../../lib/graphql'
+import { contentListClasses } from '../../config' 
 
 export default function Index({ posts, page, totalPages }) {
   
@@ -9,7 +10,7 @@ export default function Index({ posts, page, totalPages }) {
   return (
     <>
       <h1>Blog</h1>
-      <ContentList items={posts} basePath="/blog/post" />
+      <ContentList classes={contentListClasses} items={posts} basePath="/blog/post" />
       <div className="flex flex-wrap justify-between">
         {
           currentPage >= 2 && currentPage <= totalPages && (
