@@ -24,17 +24,20 @@ export default function Post({ post, content }) {
           title={post.title}
         />
       </Head>
-      <div className="flex flex-wrap justify-between">
-        <h1>{post.title}</h1>
-        <div>
+      <div className="content-container content-grid">
+        <div className="content-title-container">
+          <h1>{post.title}</h1>
+        </div>
+        <div className="content-meta-container">
+          <p className="hidden md:block">Tags:</p>
           <ContentList 
             items={tags} 
             basePath={`/tags`} 
             classes={taxonomyListClasses} 
           />
         </div>
+        <div className="post-content max-w-prose" dangerouslySetInnerHTML={{ __html: content }}></div>
       </div>
-      <div className="post-content max-w-prose" dangerouslySetInnerHTML={{ __html: content }}></div>
     </>
   )
 }

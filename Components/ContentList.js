@@ -7,7 +7,7 @@ const ContentList = ({ items, basePath, classes }) => (
         return (
           <li className={classes.itemClasses} key={index}>
             <Link href={`${basePath}/${item.slug}`}>
-              <a className="text-2xl">
+              <a className={classes.linkClasses}>
                 {item.title}
               </a>
             </Link>
