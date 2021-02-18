@@ -1,10 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
 
 import { markdownToHTML } from '../../../lib/markdown'
 import { contentfulQuery } from '../../../lib/graphql'
-import { taxonomyListClasses } from '../../../config'
-import ContentList from '../../../Components/ContentList'
+import PostTypeLayout from '../../../Components/Layout/PostTypeLayout'
 
 import SEO from '../../../Components/Head/SEO'
 
@@ -25,35 +23,11 @@ export default function Post({ post, content }) {
           title={post.title}
         />
       </Head>
-      <div className="content-container content-grid">
-        <div className="content-title-container">
-          <h1>{post.title}</h1>
-        </div>
-        <div className="content-meta-container hidden md:block">
-          <p>Tags:</p>
-          <ContentList 
-            items={tags} 
-            basePath={`/tags`} 
-            classes={taxonomyListClasses} 
-          />
-        </div>
-        <div className="post-content max-w-prose" dangerouslySetInnerHTML={{ __html: content }}></div>
-        <div className="content-image hidden lg:block sticky top-16 mt-8">
-          <Image 
-            src={post.featuredImageReference.featuredImage.url}
-            alt={post.featuredImageReference.altText}
-            layout="responsive"
-            height={post.featuredImageReference.featuredImage.height / 10}
-            width={post.featuredImageReference.featuredImage.width / 10}
-          />
-          <div className="mt-4">
-            <p>Image by: <a href={post.featuredImageReference.imageCreditLink}>
-                {post.featuredImageReference.imageCredit}
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
+      <PostTypeLayout 
+        item={post}
+        markdown={content}
+        tags={tags}
+      />
     </>
   )
 }
