@@ -3,19 +3,22 @@ import Image from 'next/image'
 import ContentList from '../ContentList'
 import { taxonomyListClasses } from '../../config'
 
-export default function PostTypeLayout({ item, markdown, tags }) {
+export default function PostTypeLayout({ item, markdown, tags = [], taxonomyName = 'tags' }) {
+
+  const hasTaxonomy = tags.length > 0 ? true : false
+
   return (
     <div className="content-container content-grid">
       <div className="content-title-container">
         <h1>{item.title}</h1>
       </div>
       {
-        tags && (
+        hasTaxonomy && (
           <div className="content-meta-container hidden md:block">
-            <p>Tags:</p>
+            <p>{taxonomyName.toUpperCase()}:</p>
             <ContentList
               items={tags}
-              basePath={`/tags`}
+              basePath={`/${taxonomyName}`}
               classes={taxonomyListClasses}
             />
           </div>
