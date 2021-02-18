@@ -15,7 +15,7 @@ export default function Index({ posts }) {
       />
       <div className="flex flex-wrap justify-end">
         {
-          posts.length >= 10 && (
+          posts.length > 10 && (
             <PaginationLink href='/blog/2'>
               Next Page
             </PaginationLink>

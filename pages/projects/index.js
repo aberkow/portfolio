@@ -1,5 +1,61 @@
-export default function Index() {
+import { contentfulQuery } from "../../lib/graphql"
+import ContentList from '../../Components/ContentList'
+import { contentListClasses } from "../../config"
+import PaginationLink from "../../Components/PaginationLink"
+import { normalizeKeys } from "../../lib/normalize"
+
+export default function Index({ projects }) {
   return (
-    <h1>Project List</h1>
+    <>
+      <h1>Projects</h1>
+      <ContentList
+        items={projects}
+        basePath="/projects"
+        classes={contentListClasses}
+      />
+      {
+        projects.length > 10 && (
+          <div className="flex flex-wrap justify-end">
+            <PaginationLink href="/projects/2">
+              Next Page
+            </PaginationLink>
+          </div>
+        )
+      }
+    </>
   )
+}
+
+export async function getStaticProps() {
+  const query = `
+    {
+      projectCollection (
+        limit: 10
+      ) {
+        total
+        items {
+          projectTitle
+          projectSlug
+          projectDescription
+        }
+      }
+    }
+  `
+
+  const replacements = {
+    projectTitle: 'title',
+    projectSlug: 'slug',
+    projectDescription: 'excerpt'
+  }
+
+  const { data } = await contentfulQuery(query)
+  
+  const normalizedProjects = normalizeKeys(data.projectCollection.items[0], replacements)
+
+  return {
+    props: {
+      projects: [ normalizedProjects ]
+    }
+  }
+
 }
