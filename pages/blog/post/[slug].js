@@ -29,8 +29,8 @@ export default function Post({ post, content }) {
         <div className="content-title-container">
           <h1>{post.title}</h1>
         </div>
-        <div className="content-meta-container">
-          <p className="hidden md:block">Tags:</p>
+        <div className="content-meta-container hidden md:block">
+          <p>Tags:</p>
           <ContentList 
             items={tags} 
             basePath={`/tags`} 

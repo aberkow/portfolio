@@ -24,7 +24,7 @@ export const contentListClasses = {
 }
 
 export const taxonomyListClasses = {
-  listClasses: 'hidden md:block list-disc',
+  listClasses: 'list-disc',
   itemClasses: 'pb-2',
   linkClasses: ''
 }
