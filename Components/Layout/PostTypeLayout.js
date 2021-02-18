@@ -6,6 +6,7 @@ import { taxonomyListClasses } from '../../config'
 export default function PostTypeLayout({ item, markdown, tags = [], taxonomyName = 'tags' }) {
 
   const hasTaxonomy = tags.length > 0 ? true : false
+  const taxTitle = taxonomyName.charAt(0).toUpperCase() + taxonomyName.slice(1)
 
   return (
     <div className="content-container content-grid">
@@ -15,7 +16,7 @@ export default function PostTypeLayout({ item, markdown, tags = [], taxonomyName
       {
         hasTaxonomy && (
           <div className="content-meta-container hidden md:block">
-            <p>{taxonomyName.toUpperCase()}:</p>
+            <p>{taxTitle}:</p>
             <ContentList
               items={tags}
               basePath={`/${taxonomyName}`}
