@@ -11,7 +11,11 @@ const ContentList = ({ items, basePath, classes }) => (
                 {item.title}
               </a>
             </Link>
-            <div>{item.excerpt}</div>
+            {
+              item.excerpt && (
+                <div>{item.excerpt}</div>
+              )
+            }
           </li>
         )
       })

@@ -5,7 +5,7 @@ import SEO from '../Components/Head/SEO'
 class PortfolioDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html lang="eng">
         <Head>
           <SEO 
             description="Adam Berkowitz is a web developer based in West Hartford Connecticut" 
