@@ -1,12 +1,18 @@
 import { contentfulQuery } from '../../lib/graphql'
+import { normalizeKeys, normalizeTags } from '../../lib/normalize'
 import { markdownToHTML } from '../../lib/markdown'
 import PostTypeLayout from '../../Components/Layout/PostTypeLayout'
 
 export default function Project({ project, content }) {
+
+  const tags = normalizeTags(project.projectTechnologyListCollection.items, 'technologySlug', 'technologyName')
+
   return (
     <PostTypeLayout 
       item={project}
       markdown={content}
+      tags={tags}
+      taxonomyName="technology"
     />
   )
 }
@@ -48,11 +54,20 @@ export async function getStaticProps({ params }) {
   const project = await contentfulQuery(query)
   const content = await markdownToHTML(project.data.projectCollection.items[0]['projectContent'])
 
+  const replacements = {
+    projectTitle: 'title',
+    projectImage: 'featuredImageReference'
+  }
+
+  const normalizedProject = normalizeKeys(project.data.projectCollection.items[0], replacements)
+
+  // console.log(replacedKeys);
+
   delete project.data.projectCollection.items[0]['projectContent']
 
   return {
     props: {
-      project: project.data.projectCollection.items[0],
+      project: normalizedProject,
       content
     }
   }

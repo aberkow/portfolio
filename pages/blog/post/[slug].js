@@ -1,5 +1,6 @@
 import Head from 'next/head'
 
+import { normalizeTags } from '../../../lib/normalize'
 import { markdownToHTML } from '../../../lib/markdown'
 import { contentfulQuery } from '../../../lib/graphql'
 import PostTypeLayout from '../../../Components/Layout/PostTypeLayout'
@@ -8,12 +9,7 @@ import SEO from '../../../Components/Head/SEO'
 
 export default function Post({ post, content }) {
 
-  const tags = post.tagReferenceGroupCollection.items.map(item => {
-    return {
-      slug: item.taxonomySlug,
-      title: item.taxonomyName
-    }
-  })
+  const tags = normalizeTags(post.tagReferenceGroupCollection.items, 'taxonomySlug', 'taxonomyName')
 
   return (
     <>
