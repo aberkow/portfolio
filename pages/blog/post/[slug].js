@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 
 import { markdownToHTML } from '../../../lib/markdown'
 import { contentfulQuery } from '../../../lib/graphql'
@@ -37,6 +38,21 @@ export default function Post({ post, content }) {
           />
         </div>
         <div className="post-content max-w-prose" dangerouslySetInnerHTML={{ __html: content }}></div>
+        <div className="content-image hidden lg:block sticky top-16 mt-8">
+          <Image 
+            src={post.featuredImageReference.featuredImage.url}
+            alt={post.featuredImageReference.altText}
+            layout="responsive"
+            height={post.featuredImageReference.featuredImage.height / 10}
+            width={post.featuredImageReference.featuredImage.width / 10}
+          />
+          <div className="mt-4">
+            <p>Image by: <a href={post.featuredImageReference.imageCreditLink}>
+                {post.featuredImageReference.imageCredit}
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     </>
   )
@@ -55,6 +71,16 @@ export async function getStaticProps({ params }) {
           slug
           title
           content
+          featuredImageReference {
+            altText
+            imageCredit
+            imageCreditLink
+            featuredImage {
+              url
+              width
+              height
+            }
+          }
           tagReferenceGroupCollection {
             items {
               taxonomyName

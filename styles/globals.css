@@ -115,10 +115,17 @@ code {
 }
 
 .content-meta-container {
+  @apply bg-gray-50;
   grid-column: 4 / 5;
   grid-row: 2 / 3;
+  padding: 1rem 2rem;
   position: sticky;
   top: 4rem;
+  z-index: 2;
+}
+
+.content-image {
+  grid-column: 3 / 5;
 }
 
 .post-content {

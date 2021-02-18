@@ -12,6 +12,9 @@ export default function Footer() {
               <a href="https://nextjs.com">NextJS</a>
             </li>
             <li>
+              <a href="https://unsplash.com">Unsplash</a>
+            </li>
+            <li>
               <a href="https://vercel.com">Vercel</a>
             </li>
           </ul>
