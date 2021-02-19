@@ -103,6 +103,10 @@ code {
   margin: 1rem 0;
 }
 
+.content-index-list-item {
+  @apply px-4 py-10 -mx-4;
+}
+
 .content-grid {
   display: grid;
   gap: 0.5rem;

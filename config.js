@@ -19,7 +19,7 @@ export const mainLinks = [
 
 export const contentListClasses = {
   listClasses: 'max-w-prose',
-  itemClasses: 'px-4 py-10 -mx-4',
+  itemClasses: 'content-index-list-item',
   linkClasses: 'text-2xl'
 }
 
