@@ -1,7 +1,7 @@
-import { contentfulQuery } from '../../lib/graphql'
-import { normalizeKeys, normalizeTags } from '../../lib/normalize'
-import { markdownToHTML } from '../../lib/markdown'
-import PostTypeLayout from '../../Components/Layout/PostTypeLayout'
+import { contentfulQuery } from '../../../lib/graphql'
+import { normalizeKeys, normalizeTags } from '../../../lib/normalize'
+import { markdownToHTML } from '../../../lib/markdown'
+import PostTypeLayout from '../../../Components/Layout/PostTypeLayout'
 
 export default function Project({ project, content }) {
 
@@ -61,8 +61,6 @@ export async function getStaticProps({ params }) {
 
   const normalizedProject = normalizeKeys(project.data.projectCollection.items[0], replacements)
 
-  // console.log(replacedKeys);
-
   delete project.data.projectCollection.items[0]['projectContent']
 
   return {
@@ -88,7 +86,7 @@ export async function getStaticPaths() {
   const projects = await contentfulQuery(query)
   const paths = projects.data.projectCollection.items
   return {
-    paths: paths.map(({ projectSlug }) => `/projects/${encodeURIComponent(projectSlug)}` ),
+    paths: paths.map(({ projectSlug }) => `/projects/item/${encodeURIComponent(projectSlug)}` ),
     fallback: false
   }
 }

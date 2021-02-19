@@ -10,7 +10,7 @@ export default function Index({ projects }) {
       <h1>Projects</h1>
       <ContentList
         items={projects}
-        basePath="/projects"
+        basePath="/projects/item"
         classes={contentListClasses}
       />
       {
