@@ -25,7 +25,7 @@ export default function Contact() {
   return (
     <>
     <h1>Say hello <span aria-hidden="true">👋</span></h1>
-    <form className={showSuccess ? 'hidden' : ''} onSubmit={handleSubmit(onSubmit)}>
+    <form className={showSuccess ? 'hidden' : 'max-w-prose'} onSubmit={handleSubmit(onSubmit)}>
       <div>
         <div>
           <label htmlFor="name"><span className="text-red-700">* </span>Name: </label>
@@ -93,7 +93,7 @@ export default function Contact() {
     </form>
     {
       showSuccess && (
-        <div>
+        <div className="max-w-prose">
           <h2>Thanks for reaching out!</h2>
             <p>While I get back to you, please feel free to <a href="https://twitter.com/adamjberkowitz">talk with me on twitter</a> or <a href="https://github.com/aberkow">checkout my work on github</a>.</p>
         </div>
