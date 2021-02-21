@@ -9,7 +9,7 @@ export default function PostTypeLayout({ item, markdown, tags = [], taxonomyName
   const taxTitle = taxonomyName.charAt(0).toUpperCase() + taxonomyName.slice(1)
 
   return (
-    <div className="content-container content-grid">
+    <article className="content-container content-grid">
       <div className="content-title-container">
         <h1>{item.title}</h1>
       </div>
@@ -45,6 +45,6 @@ export default function PostTypeLayout({ item, markdown, tags = [], taxonomyName
           </div>
         )
       }
-    </div>
+    </article>
   )
 }
