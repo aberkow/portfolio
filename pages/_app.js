@@ -1,6 +1,6 @@
 import "tailwindcss/tailwind.css";
 import '../styles/globals.css'
-import 'prismjs/themes/prism-okaidia.css'
+import '../styles/custom-prism-theme-dark.css'
 
 import Layout from '../Components/Layout/Layout'
 
