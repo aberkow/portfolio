@@ -150,6 +150,19 @@ ul {
   margin-left: 1rem;
 }
 
+#skip-nav {
+  @apply bg-gray-50 border-t border-r border-b border-l border-blue-700 p-4 text-blue-700;
+  font-weight: 700;
+  position: absolute;
+  left: -9999px;
+  z-index: 2;
+}
+
+#skip-nav:focus {
+  top: 1rem;
+  left: 1rem;
+}
+
 @media screen and (min-width: 64rem) {
   .post-content {
     grid-column: 1 / 4;
