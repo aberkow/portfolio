@@ -33,7 +33,31 @@ export default function About() {
         </ul>
       </div>
       <div>
-        
+        <h2>Things I use</h2>
+        <p>Here are some of the tools I use for web development.</p>
+        <ul>
+          <li>Hardware</li>
+          <ul>
+            <li>MacBook Pro</li>
+            <li><a href="https://www.logitech.com/en-us/products/keyboards/k860-split-ergonomic.920-009166.html">Logitech Ergo K860 keyboard</a></li>
+            <li><a href="https://www.logitech.com/en-us/products/mice/mx-master-3-mac-wireless-mouse.910-005693.html?crid=7">Logitech MX Mouse</a></li>
+          </ul>
+          <li>Software</li>
+          <ul>
+            <li><a href="https://www.docker.com">Docker</a></li>
+            <li><a href="https://brew.sh/">Homebrew</a></li>
+            <li><a href="https://iterm2.com/version3.html">iTerm</a></li>
+            <li><a href="https://www.sequelpro.com/">Sequel Pro</a></li>
+            <li><a href="https://panic.com/transmit/">Transmit</a></li>
+            <li><a href="https://code.visualstudio.com/">VSCode</a></li>
+            <li><a href="https://ohmyz.sh/">zsh</a></li>
+          </ul>
+          <li>Other interesting stuff</li>
+          <ul>
+            <li><a href="https://www.jetbrains.com/lp/mono/">JetBrains Mono Font</a></li>
+            <li><a href="https://monokai.pro/">Monokai Pro VSCode Theme</a></li>
+          </ul>
+        </ul>
       </div>
     </div>
   )
