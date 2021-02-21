@@ -7,7 +7,9 @@ import PostTypeLayout from '../../../Components/Layout/PostTypeLayout'
 
 import SEO from '../../../Components/Head/SEO'
 
-export default function Post({ post, content }) {
+export default function Post({ post, content, seo }) {
+
+  console.log(seo);
 
   const tags = normalizeTags(post.tagReferenceGroupCollection.items, 'taxonomySlug', 'taxonomyName')
 
@@ -17,6 +19,7 @@ export default function Post({ post, content }) {
         <SEO
           description="A blog post"
           title={post.title}
+          imageURL={seo.imageURL}
         />
       </Head>
       <PostTypeLayout 
@@ -66,12 +69,17 @@ export async function getStaticProps({ params }) {
 
   const content = await markdownToHTML(post.data.blogPostCollection.items[0]['content'])
   
+  const seoURL = post.data.blogPostCollection.items[0]['featuredImageReference']['featuredImage']['url']
+
   delete post.data.blogPostCollection.items[0]['content']
 
   return {
     props: {
       post: post.data.blogPostCollection.items[0],
-      content
+      content,
+      seo: {
+        imageURL: seoURL
+      }
     }
   }
 }
