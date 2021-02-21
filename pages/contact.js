@@ -36,7 +36,7 @@ export default function Contact() {
             name="name"
             id="name"
             placeholder="Sam Smith"
-            ref={register({ required: true })}
+            register={register({ required: true })}
           />
         </div>
       </div>
@@ -50,7 +50,7 @@ export default function Contact() {
             name="email"
             id="email"
             placeholder="hello@youremail.com"
-            ref={register({ required: true })}
+            register={register({ required: true })}
           />
         </div>
       </div>
@@ -64,7 +64,7 @@ export default function Contact() {
               name="subject"
               id="subject"
               placeholder="Subject"
-              ref={register({ required: true })}
+              register={register({ required: true })}
             />
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function Contact() {
             name="message"
             id="message"
             placeholder="Write your message..."
-            ref={register}
+            register={register}
           />
         </div>
       </div>

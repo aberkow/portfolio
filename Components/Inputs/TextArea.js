@@ -1,6 +1,6 @@
 import styles from '../../styles/Inputs.module.css'
 
-export default function TextArea({ name, id, placeholder, ref }) {
+export default function TextArea({ name, id, placeholder, register }) {
   return (
     <textarea 
       name={name} 
@@ -8,7 +8,7 @@ export default function TextArea({ name, id, placeholder, ref }) {
       cols="30" 
       rows="10"
       placeholder={placeholder}
-      ref={ref}
+      ref={register}
       className={styles.textarea}
       ></textarea>
   )
