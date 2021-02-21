@@ -89,6 +89,10 @@ code {
   padding: 0 0.2rem 0.2rem;
 }
 
+ul {
+  @apply list-disc ml-5;
+}
+
 .intro-container,
 .headshot-name-container {
   flex: 1 1 50%;

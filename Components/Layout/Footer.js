@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer>
       <div className="flex flex-wrap">
-        <div className="mx-4 mb-8">
+        <div className="mb-8">
           <p>Built with:</p>
           <ul className="list-disc">
             <li>
@@ -12,6 +12,9 @@ export default function Footer() {
               <a href="https://nextjs.com">NextJS</a>
             </li>
             <li>
+              <a href="https://sendgrid.com">SendGrid</a>
+            </li>
+            <li>
               <a href="https://unsplash.com">Unsplash</a>
             </li>
             <li>
@@ -19,7 +22,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className="mx-4 md:mx-8">
+        <div className="md:mx-8">
           Say hello!
           <ul className="list-disc">
             <li>

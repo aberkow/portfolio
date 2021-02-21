@@ -32,11 +32,8 @@ export default function Home() {
         <div className="welcome-container max-w-prose my-8">
           <p>Hello,</p>
           <p>I'm Adam. A web developer based in West Hartford Connecticut.</p>
-          <p>I believe that:</p>
-          <ul>
-            <li>What we can learn is more important than what we know.</li>
-            <li></li>
-          </ul>
+          <p>I believe that what we can learn is more important than what we know.</p>
+          <p>I hope you enjoy some of the posts I've written.</p>
         </div>
       </div>
     </>

@@ -10,12 +10,12 @@ export default function Header() {
   const [ isMenuOpen, setIsMenuOpen ] = useState(false)
 
   const menuClasses = {
-    menuClasses: 'hidden md:flex md:my-14',
+    menuClasses: 'hidden list-none md:flex md:my-14',
     linkClasses: 'block p-4 hover:text-blue-800 focus:text-blue-800'
   }
 
   const mobileClasses = {
-    menuClasses: isMenuOpen ? `font-mono flex flex-col` : `hidden`,
+    menuClasses: isMenuOpen ? `list-none font-mono flex flex-col` : `hidden`,
     linkClasses: 'block p-4 hover:text-blue-800 focus:text-blue-800'
   }
 
