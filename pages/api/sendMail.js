@@ -5,9 +5,7 @@ dotenv.config()
 
 export default async function(req, res) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-  
-  console.log(req.body);
-
+ 
   const message = {
     to: 'adam@adamjberkowitz.com',
     from: 'adam@adamjberkowitz.com',

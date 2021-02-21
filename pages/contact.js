@@ -1,30 +1,43 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-export default function Contact() {
+import Input from '../Components/Inputs/Input'
+import TextArea from '../Components/Inputs/TextArea'
+import Submit from '../Components/Inputs/Submit'
 
-  const { register, handleSubmit } = useForm()
+export default function Contact() {
+  const [ showSuccess, setShowSuccess ] = useState(false)
+  const { register, handleSubmit, reset } = useForm()
+  
   const onSubmit = async (data) => {
-    const res = await fetch('/api/sendMail', {
+    await fetch('/api/sendMail', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
-    }).then(res => {
-      console.log(res);
+    }).then(() => {
+      reset()
+      setShowSuccess(true)
     }).catch(err => console.log(err))
     
   };
   return (
     <>
     <h1>Say hello <span aria-hidden="true">👋</span></h1>
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className={showSuccess ? 'hidden' : ''} onSubmit={handleSubmit(onSubmit)}>
       <div>
         <div>
           <label htmlFor="name"><span className="text-red-700">* </span>Name: </label>
         </div>
         <div>
-          <input type="text" name="name" placeholder="Sam Smith" ref={register({ required: true })} />
+          <Input 
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Sam Smith"
+            ref={register({ required: true })}
+          />
         </div>
       </div>
       <div>
@@ -32,23 +45,40 @@ export default function Contact() {
           <label htmlFor="email"><span className="text-red-700">* </span>Email: </label>
         </div>
         <div>
-          <input type="email" name="email" placeholder="hello@youremail.com" ref={register({ required: true })} />
+          <Input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="hello@youremail.com"
+            ref={register({ required: true })}
+          />
         </div>
       </div>
         <div>
           <div>
-            <label htmlFor="subject"><span className="text-red-700">* </span>Subject: </label>
+            <label htmlFor="subject"><span className="text-red-700">* </span>What would you like to talk about?</label>
           </div>
           <div>
-            <input type="text" name="subject" placeholder="Subject" ref={register({ required: true })} />
+            <Input
+              type="text"
+              name="subject"
+              id="subject"
+              placeholder="Subject"
+              ref={register({ required: true })}
+            />
           </div>
         </div>
       <div>
         <div>
-          <label htmlFor="message">What would you like to talk about?</label>
+          <label htmlFor="message">What's on your mind?</label>
         </div>
         <div>
-          <textarea name="message" id="message" cols="30" rows="10" placeholder="Write your message..." ref={register}></textarea>
+          <TextArea 
+            name="message"
+            id="message"
+            placeholder="Write your message..."
+            ref={register}
+          />
         </div>
       </div>
 
@@ -57,8 +87,18 @@ export default function Contact() {
           <span className="text-red-700">* </span>Indicates a required field.
         </p>
       </div>
-      <input type="submit" value="Get in touch"/>
+      <div>
+        <Submit value="Get in touch" />
+      </div>
     </form>
+    {
+      showSuccess && (
+        <div>
+          <h2>Thanks for reaching out!</h2>
+            <p>While I get back to you, please feel free to <a href="https://twitter.com/adamjberkowitz">talk with me on twitter</a> or <a href="https://github.com/aberkow">checkout my work on github</a>.</p>
+        </div>
+      )
+    }
     </>
   )
 }
