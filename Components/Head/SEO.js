@@ -1,7 +1,5 @@
 export default function SEO({ description, title, imageURL }) {
 
-  console.log({ imageURL });
-
   const siteTitle = `Adam Berkowitz - ${title === '' ? 'Web Developer' : title}`
   return (
     <>
