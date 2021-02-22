@@ -23,7 +23,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className="md:mx-8">
-          Say hello!
+          <p>Say hello!</p>
           <ul className="list-disc">
             <li>
               <a href="mailto:adam@adamjberkowitz.com">Email</a>
