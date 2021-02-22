@@ -1,27 +1,48 @@
-import Head from 'next/head'
+import { Helmet } from 'react-helmet'
 
 import { normalizeTags } from '../../../lib/normalize'
 import { markdownToHTML } from '../../../lib/markdown'
 import { contentfulQuery } from '../../../lib/graphql'
 import PostTypeLayout from '../../../Components/Layout/PostTypeLayout'
 
-import SEO from '../../../Components/Head/SEO'
-
 export default function Post({ post, content, seo }) {
-
-  console.log(seo);
 
   const tags = normalizeTags(post.tagReferenceGroupCollection.items, 'taxonomySlug', 'taxonomyName')
 
   return (
     <>
-      <Head>
-        <SEO
-          description="A blog post"
-          title={post.title}
-          imageURL={seo.imageURL}
-        />
-      </Head>
+      <Helmet 
+        title={`Adam Berkowitz - ${post.title}`}
+        description={seo.description}
+        meta={
+          [
+            {
+              property: 'og:title',
+              content: `Adam Berkowitz - ${post.title}`
+            },
+            {
+              property: 'og:image',
+              content: seo.imageURL
+            },
+            {
+              property: 'twitter:card',
+              content: 'summary'
+            },
+            {
+              property: 'twitter:title',
+              content: `Adam Berkowitz - ${post.title}`
+            },
+            {
+              property: 'twitter:description',
+              content: `${seo.description}`
+            },
+            {
+              property: 'twitter:image',
+              content: seo.imageURL
+            }
+          ]
+        }
+      />
       <PostTypeLayout 
         item={post}
         markdown={content}
@@ -44,6 +65,7 @@ export async function getStaticProps({ params }) {
           slug
           title
           content
+          excerpt
           featuredImageReference {
             altText
             imageCredit
@@ -78,7 +100,8 @@ export async function getStaticProps({ params }) {
       post: post.data.blogPostCollection.items[0],
       content,
       seo: {
-        imageURL: seoURL
+        imageURL: seoURL,
+        description: post.data.blogPostCollection.items[0]['excerpt']
       }
     }
   }
