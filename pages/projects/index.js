@@ -50,11 +50,11 @@ export async function getStaticProps() {
 
   const { data } = await contentfulQuery(query)
   
-  const normalizedProjects = normalizeKeys(data.projectCollection.items[0], replacements)
+  const normalizedProjects = data.projectCollection.items.map(item => normalizeKeys(item, replacements))
 
   return {
     props: {
-      projects: [ normalizedProjects ]
+      projects: normalizedProjects
     }
   }
 
