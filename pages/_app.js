@@ -14,6 +14,10 @@ function MyApp({ Component, pageProps }) {
         description="Adam Berkowitz is a web developer based in West Hartford Connecticut"
         meta={[
           {
+            name: 'description',
+            content: 'Adam Berkowitz is a web developer based in West Hartford Connecticut'
+          },
+          {
             name: 'viewport',
             content: 'width=device-width, initial-scale=1',
           },

@@ -30,6 +30,7 @@ export async function getStaticProps({ params }) {
           projectSlug
           projectTitle
           projectContent
+          projectRepo
           projectImage {
             altText
             imageCredit
