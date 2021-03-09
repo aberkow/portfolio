@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet'
 import { contentfulQuery } from "../../lib/graphql"
 import ContentList from '../../Components/ContentList'
 import { contentListClasses } from "../../config"
@@ -7,6 +8,15 @@ import { normalizeKeys } from "../../lib/normalize"
 export default function Index({ projects }) {
   return (
     <>
+      <Helmet 
+        title="Adam Berkowitz - Projects"
+        meta={[
+          {
+            property: 'og:title',
+            content: 'Adam Berkowitz - Projects'
+          }
+        ]}
+      />
       <h1>Projects</h1>
       <ContentList
         items={projects}

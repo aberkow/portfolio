@@ -1,7 +1,10 @@
 import { Helmet } from 'react-helmet'
+import { AnalyticsProvider } from 'use-analytics'
+
 import "tailwindcss/tailwind.css";
 import '../styles/globals.css'
 import '../styles/custom-prism-theme-dark.css'
+import analytics from '../lib/analytics'
 
 import Layout from '../Components/Layout/Layout'
 
@@ -54,9 +57,11 @@ function MyApp({ Component, pageProps }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=IBM+Plex+Serif:wght@700&display=swap" rel="stylesheet" />
       </Helmet>
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+      <AnalyticsProvider instance={analytics}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AnalyticsProvider>
     </>
   )
 }
