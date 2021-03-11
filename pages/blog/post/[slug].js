@@ -1,5 +1,9 @@
 import { Helmet } from 'react-helmet'
 
+import fs from 'fs'
+import https from 'https'
+import path from 'path'
+
 import { normalizeTags } from '../../../lib/normalize'
 import { markdownToHTML } from '../../../lib/markdown'
 import { contentfulQuery } from '../../../lib/graphql'
@@ -71,6 +75,7 @@ export async function getStaticProps({ params }) {
             imageCredit
             imageCreditLink
             featuredImage {
+              fileName
               url
               width
               height
@@ -94,6 +99,16 @@ export async function getStaticProps({ params }) {
   const seoURL = post.data.blogPostCollection.items[0]['featuredImageReference']['featuredImage']['url']
 
   delete post.data.blogPostCollection.items[0]['content']
+
+  const filePath = path.join(process.cwd(), 'public', 'post-images', post.data.blogPostCollection.items[0]['featuredImageReference']['featuredImage']['fileName'])
+
+  console.log({ imagePath: filePath });
+
+  const file = fs.createWriteStream(filePath)
+  
+  https.get(post.data.blogPostCollection.items[0]['featuredImageReference']['featuredImage']['url'], (res) => {
+    res.pipe(file)
+  })
 
   return {
     props: {
