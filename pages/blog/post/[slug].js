@@ -100,7 +100,9 @@ export async function getStaticProps({ params }) {
 
   delete post.data.blogPostCollection.items[0]['content']
 
-  const filePath = path.join(process.cwd(), 'public', 'post-images', post.data.blogPostCollection.items[0]['featuredImageReference']['featuredImage']['fileName'])
+  const publicDirPath = path.resolve('./public', 'post-images')
+
+  const filePath = path.join(publicDirPath, post.data.blogPostCollection.items[0]['featuredImageReference']['featuredImage']['fileName'])
 
   console.log({ imagePath: filePath });
 
