@@ -100,18 +100,6 @@ export async function getStaticProps({ params }) {
 
   delete post.data.blogPostCollection.items[0]['content']
 
-  const publicDirPath = path.resolve('./public', 'post-images')
-
-  const filePath = path.join(publicDirPath, post.data.blogPostCollection.items[0]['featuredImageReference']['featuredImage']['fileName'])
-
-  console.log({ imagePath: filePath });
-
-  const file = fs.createWriteStream(filePath)
-  
-  https.get(post.data.blogPostCollection.items[0]['featuredImageReference']['featuredImage']['url'], (res) => {
-    res.pipe(file)
-  })
-
   return {
     props: {
       post: post.data.blogPostCollection.items[0],
