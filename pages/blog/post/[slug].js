@@ -71,6 +71,7 @@ export async function getStaticProps({ params }) {
             imageCredit
             imageCreditLink
             featuredImage {
+              fileName
               url
               width
               height

@@ -30,11 +30,12 @@ export default function PostTypeLayout({ item, markdown, tags = [], taxonomyName
         item.featuredImageReference && (
           <div className="content-image hidden lg:block sticky top-16 mt-8">
             <Image
-              src={item.featuredImageReference.featuredImage.url}
+              src={`/post-images/${item.featuredImageReference.featuredImage.fileName}`}
               alt={item.featuredImageReference.altText}
               layout="responsive"
               height={item.featuredImageReference.featuredImage.height / 10}
               width={item.featuredImageReference.featuredImage.width / 10}
+              priority={true}
             />
             <div className="mt-4">
               <p>Image by: <a href={item.featuredImageReference.imageCreditLink}>
