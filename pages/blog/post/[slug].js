@@ -1,9 +1,5 @@
 import { Helmet } from 'react-helmet'
 
-import fs from 'fs'
-import https from 'https'
-import path from 'path'
-
 import { normalizeTags } from '../../../lib/normalize'
 import { markdownToHTML } from '../../../lib/markdown'
 import { contentfulQuery } from '../../../lib/graphql'
